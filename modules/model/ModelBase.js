@@ -32,11 +32,12 @@ define(function () {
             return children;
         };
 
-        that.addChild = function (child) {
-            children.push(child);
+        that.addChild = function (child, position) {
+            position === undefined ?  children.push(child) : children.splice(position, 0, child);
             child.setParent(that);
             triggerEvent('childAdded', child);
         };
+
 
         that.addChildren = function (childrenDef) {
             childrenDef.forEach(function (childDef) {
