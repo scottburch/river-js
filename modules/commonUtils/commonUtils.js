@@ -120,6 +120,17 @@ defineModule({
             }
         };
 
+        that.findIndexBy = function(arr, test) {
+            var l = arr.length;
+            for (var i = 0; i < l ; i++) {
+                if (test(arr[i])) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+
         that.findAll = function(arr, test) {
             return arr.reduce(function(ret, it) {
                 test(it) && ret.push(it);
