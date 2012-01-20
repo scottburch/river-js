@@ -39,7 +39,6 @@ define(['vendor/ext-4.0.7/ux/CheckColumn'], function(CheckColumn) {
                 bbar: [
                     {text: 'Save', handler: save}
                 ]
-
             });
             return that;
         }
