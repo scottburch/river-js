@@ -34,8 +34,6 @@ define(['vendor/ext-4.0.7/ux/CheckColumn'], function(CheckColumn) {
                     {text: 'Category', dataIndex: 'category', width: 70}
                 ],
                 columnLines: true,
-                width: 600,
-                height: 300,
                 frame: true,
                 iconCls: 'icon-grid',
                 bbar: [
