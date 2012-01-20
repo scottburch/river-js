@@ -53,6 +53,11 @@ define(function () {
             return properties.length > 0;
         }
 
+        that.indexUnderParent = function() {
+            return arrayUtils.findIndexBy(parent.getChildren(), function(obj) {
+                return obj.getId() === id;
+            });
+        }
 
         that.removeChild = function (child) {
             arrayUtils.remove(children, child);
