@@ -84,9 +84,6 @@ define(function () {
             });
         };
 
-
-
-
         that.addProperty = function (prop) {
             if (prop.instanceOf === undefined || prop.instanceOf(Property) === false) {
                 prop = Property(prop, that);
