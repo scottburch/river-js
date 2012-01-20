@@ -9,6 +9,7 @@ describe('model:ModelBase', function () {
         ModelBase = require('modelModule').ModelBase;
         model = require('modelModule');
         testObj = ModelBase('testObj');
+        testObj.addProperty(Property({name: 'testProperty', value: 'myValue'}));
     });
 
     describe('getId()', function () {
@@ -67,11 +68,33 @@ describe('model:ModelBase', function () {
 
     describe('getPropertyValue', function() {
         it('returns the value if the property exists', function() {
-            testObj.addProperty(Property({name: 'testProperty', value: 'myValue'}));
             expect(testObj.getPropertyValue('testProperty')).toBe('myValue');
         });
-        it('returns undefined if the property does not exist', function() {
+        it("returns undefined if the property does not exist and you don't pass a default", function() {
             expect(testObj.getPropertyValue('fakeProperty')).toBe(undefined);
+        });
+        it('returns the default value if the property does not exist and you pass one', function() {
+            expect(testObj.getPropertyValue('fakeproeprty', 'defaultValue')).toBe('defaultValue');
+        });
+    });
+
+    describe('hasProperty()', function() {
+        it('returns false if the property does not exist', function() {
+            expect(testObj.hasProperty('fakeProperty')).toBe(false);
+        });
+        it('returns true if the property does exist', function() {
+            expect(testObj.hasProperty('testProperty')).toBe(true);
+        });
+    });
+
+    describe('setPropertyValue()', function() {
+        it('sets a property Value if it exists', function() {
+            testObj.setPropertyValue('testProperty', 'newValue');
+            expect(testObj.getPropertyValue('testProperty')).toBe('newValue');
+        });
+        it('adds a property if the property does not exist', function() {
+            testObj.setPropertyValue('notExistProperty', 'theValue');
+            expect(testObj.getPropertyValue('notExistProperty')).toBe('theValue');
         });
     });
 
@@ -80,7 +103,7 @@ describe('model:ModelBase', function () {
             spyOn(model, 'propertyAdded');
             var prop = Property({name:'testProperty'});
             testObj.addProperty(prop);
-            expect(testObj.getProperties()[0]).toBe(prop);
+            expect(testObj.getProperties()[1]).toBe(prop);
             expect(model.propertyAdded).toHaveBeenCalledWith(prop);
         });
     });
@@ -97,7 +120,7 @@ describe('model:ModelBase', function () {
             testObj.removeProperty(prop);
         });
         then('the property is removed from properties', function () {
-            expect(testObj.getProperties().length).toBe(0);
+            expect(testObj.getProperties().length).toBe(1);
         });
         and('the childRemoved event is called on model', function () {
             expect(model.propertyRemoved).toHaveBeenCalledWith({prop:prop, owner:testObj});

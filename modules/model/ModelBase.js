@@ -60,16 +60,31 @@ define(function () {
             triggerEvent('childRemoved', child, that);
         };
 
-        that.getPropertyValue = function (propName) {
+        that.getPropertyValue = function (propName, defaultValue) {
             var prop = that.getPropertyByName(propName);
-            return prop && prop.getValue()
+            return prop ? prop.getValue() : defaultValue;
         };
+
+        that.hasProperty = function(propName) {
+            return that.getPropertyByName(propName) !== undefined;
+        };
+
+        that.setPropertyValue = function(propName, value) {
+            var prop = that.getPropertyByName(propName);
+            if(!prop) {
+                that.addProperty(Property({name:propName, value:value}));
+            } else {
+                prop.setValue(value);
+            }
+        }
 
         that.getPropertyByName = function (name) {
             return arrayUtils.find(that.getProperties(), function (prop) {
                 return prop.getName() === name;
             });
         };
+
+
 
 
         that.addProperty = function (prop) {
