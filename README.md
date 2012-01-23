@@ -1,7 +1,9 @@
 NOTE: Documentation is in progress.
 
-River is a modular Javascript framework to assist in creating decoupled/reusable code.
+River is a modular Javascript framework to assist in creating client side webapps containing decoupled and reusable code.
 It is not a MVC framework as much as it is a code organizing and coordinating framework using the Facade/Mediator pattern.
+
+River allows you to write systems that are flexible and resiliant.
 
 ## Installing
 
@@ -16,6 +18,9 @@ Modules do not communicate directly with each other, rather, they communicate th
 ![facade/module relationship](https://github.com/scottburch/river-js/raw/master/docs/facade.png)
 
 This means that modules can be added, removed and disabled without affecting other modules.
+
+Modules should be completely self contained with their own resources (images, css, templates...).
+Your application should be a series of modules rather than a single module.
 
 Modules communicate through __events__ and __actions__.
 
