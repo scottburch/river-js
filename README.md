@@ -31,7 +31,7 @@ The format of the event hook is: on_[moduleName]_[event].
 
 __User View Module__
 
-    // NOTE: you can also use 'this' inside of the define Module callback if you prefer
+    // NOTE: you can also use 'this' inside of the defineModule callback if you prefer
     defineModule({name:'userView', category:'system', description:'Sends name to server'}, function(that) {
         that.updateName = function(newName) {
             that.fireEvent('nameUpdated', {name: newName});
