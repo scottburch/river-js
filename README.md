@@ -68,7 +68,7 @@ __User View Module__
 
     // NOTE: you can also use 'this' inside of the define Module callback if you prefer
     defineModule({name:'userView', category:'system', description:'Sends name to server'}, function(that) {
-        that.updateName(newName) {
+        that.updateName = function(newName) {
             that.fireEvent('nameUpdated', {name: newName});
             that.doAction('log', {message: 'user name changed'});
         }
