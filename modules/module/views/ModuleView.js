@@ -1,4 +1,4 @@
-define(['vendor/ext-4.0.7/ux/CheckColumn'], function(CheckColumn) {
+define(['vendor/ext-4.1.0-beta-1/ux/CheckColumn'], function(CheckColumn) {
 
     var that = {
         render: render
