@@ -13,6 +13,24 @@ describe('modules:commonUtils:function', function() {
         advice = jasmine.createSpy();
     });
 
+    describe('bounceProtect()', function() {
+
+        it('should keep a function from being called more than once per x miliseconds', function() {
+            var spy = jasmine.createSpy();
+            var func = functionUtils.bounceProtect(spy, 50);
+            func();
+            func();
+            func();
+            expect(spy.callCount).toBe(1);
+            waits(100);
+            runs(function() {
+                func();
+                expect(spy.callCount).toBe(2);
+            });
+        });
+
+    });
+
 
     describe('aopAround()', function() {
 
