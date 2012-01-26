@@ -15,20 +15,31 @@ describe('modules:commonUtils:function', function() {
 
     describe('bounceProtect()', function() {
 
-        it('should keep a function from being called more than once per x miliseconds', function() {
+        it('should keep a function from being again before x miliseconds when delay = false', function() {
             var spy = jasmine.createSpy();
-            var func = functionUtils.bounceProtect(spy, 50);
+            var func = functionUtils.bounceProtect(spy, 20);
             func();
             func();
             func();
             expect(spy.callCount).toBe(1);
-            waits(100);
+            waits(50);
             runs(function() {
                 func();
                 expect(spy.callCount).toBe(2);
             });
         });
 
+        it('should run a function only once after x milliseconds when delay=true', function() {
+            var spy = jasmine.createSpy();
+            var func = functionUtils.bounceProtect(spy, 20, true);
+            func();
+            func();
+            func();
+            expect(spy).not.toHaveBeenCalled();
+            waitsFor(function() {
+                return spy.callCount;
+            });
+        });
     });
 
 

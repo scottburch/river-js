@@ -71,12 +71,13 @@ defineModule({
         "use strict";
         var that = {};
 
-        that.bounceProtect = function (target, milli) {
+        that.bounceProtect = function (target, milli, delay) {
             return function () {
                 if (!target.alreadyCalled) {
                     target.alreadyCalled = true;
-                    target();
+                    !delay && target();
                     setTimeout(function () {
+                        delay && target();
                         target.alreadyCalled = false;
                     }, milli);
                 }
