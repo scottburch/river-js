@@ -1,3 +1,12 @@
+NOTES:
+
+* Documentation is in progress.
+
+* this framework is under development so breaking changes may occur.
+
+* Any feedback is very appreciated. If anyone needs help installing or using, please let me know.
+
+
 
 River is a modular Javascript framework to assist in creating client side webapps containing decoupled and reusable code.
 It is not a MVC framework as much as it is a code organizing and coordinating framework using the Facade/Mediator pattern.
