@@ -26,9 +26,9 @@ The best way to get a look into how river works is to install [river-demo](https
 ## Modules
 
 The key to river is modules.  Modules are small components with a specific functionality or portion of the application.
-Modules do not communicate directly with each other, rather, they communicate through a single facade.
+Modules do not communicate directly with each other, rather, they communicate through a single mediator.
 
-![facade/module relationship](https://github.com/scottburch/river-js/raw/master/docs/facade.png)
+![mediator/module relationship](https://github.com/scottburch/river-js/raw/master/docs/facade.png)
 
 This means that modules can be added, removed and disabled without affecting other modules.
 
@@ -71,9 +71,9 @@ The format of the event hook is: on_[moduleName]_[event].
 
 
 
-Notice that the modules do not communicate with each other directly.  The view module first fires the **userUpdated** event which gets sent to the facade.
-The facade then calls the **on_userView_nameUpdated** method of the userService module.
-When the reply comes back the **userService** module fires a 'nameUpdated' event which causes the facade to call the **on_userService_nameUpdated** event.
+Notice that the modules do not communicate with each other directly.  The view module first fires the **userUpdated** event which gets sent to the mediator.
+The mediator then calls the **on_userView_nameUpdated** method of the userService module.
+When the reply comes back the **userService** module fires a 'nameUpdated' event which causes the mediator to call the **on_userService_nameUpdated** event.
 
 
 __Global Events__
