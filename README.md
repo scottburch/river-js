@@ -37,6 +37,30 @@ Your application should be a series of modules rather than a single module.
 
 Modules communicate through __events__ and __actions__.
 
+
+### Using files within a module
+
+Modules allow for the inclusion of other files within the module.  Modules should communicate through the main module file but use other files for views and support.
+For example, the "auth" module could have a login view within the directory called views in a module.
+
+    /**
+    ** Auth module
+    **/
+    defineModule({name:'auth', category:'system', description:'Authentication'}, function(that) {
+        that.on_desktop_desktopReady = function() {                       // there is a desktop module that sets everything up first
+            that.require(['views/LoginView'], function(LoginView) {       // retreives LoginView.js from the /views directory within the module
+                LoginView(loginHelper);                                   // instantiate the login view passing helper functions separating the view from the logic
+            }
+        }
+    });
+
+    var loginHelper = {
+       doLogin: function() {
+            // do login stuff here
+       }
+    }
+
+
 ### Events
 
 When one module fires an event, all other modules that have a hook method for that event get called autmatically.
