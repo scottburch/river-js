@@ -2,8 +2,6 @@ NOTES:
 
 * Documentation is in progress.
 
-* this framework is under development so breaking changes may occur.
-
 * Any feedback is very appreciated. If anyone needs help installing or using, please let me know.
 
 
@@ -147,8 +145,24 @@ The module name is not included since actions are used when a module needs somet
     **/
 
     defineModule({name:'log', category:'system', description:'Logging module'}, function(that) {
-        do_log = function(data){
-            console.log(data.message);
+        do_log = function(data, module){                                // With actions, the originating module is passed as the second argument
+            console.log(module.name + ': ' + data.message);
         }
     });
 
+Passing the module as the second argument allows us to create actions that can opperate in the foreign modules directory.
+This may be a break from modules not communicating with each other, but it does make this more convienient.
+
+    defineModule({name:'loaders', category:'River', description:'Loaders for css...'}, function (that) {
+
+        that.do_loadCss = function(data, mod) {
+            var el = document.createElement('link');
+            el.setAttribute('rel', 'stylesheet');
+            el.setAttribute('href', mod.modulePath + '/' + data.href);
+            document.getElementsByTagName("head")[0].appendChild(el);
+        };
+    });
+
+    // In some other module
+
+    that.doAction('loadCss', {href: 'css/myModule.css'});
