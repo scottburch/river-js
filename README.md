@@ -119,6 +119,22 @@ Another type of event is a "global" event.  These are events where other modules
 
 
 
+### Built in Events
+
+The main event to kick off the application is moduleManager_modulesLoaded.  Here is an example of how to use it.
+
+    /**
+    ** Desktop Module
+    **/
+    defineModule({name:'desktop', category:'system', description:'Desktop module'}, function(that) {
+        that.on_moduleManager_modulesLoaded = function() {
+            '// setup your desktop here (load template...)
+            that.fireEvent('desktopReady');
+        }
+    });
+
+
+
 ### Actions
 
 When a module calls for an action all other modules with a hook method for that action get called.
