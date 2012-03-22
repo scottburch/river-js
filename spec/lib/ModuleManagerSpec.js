@@ -1,4 +1,42 @@
 describe('lib:ModuleManager', function () {
+
+   var ModuleManager;
+
+
+    requireDependencies(['river/lib/ModuleManager'], function(mm){
+        ModuleManager = mm;
+    });
+
+
+    describe('getNameFromPath()', function() {
+        var getNameFromPath;
+        beforeEach(function() {
+            getNameFromPath = ModuleManager.test.getNameFromPath;
+        });
+        it('returns the original name if no "/"', function() {
+            expect(getNameFromPath('myModule')).toBe('myModule');
+        });
+        it('returns the module name part of the path', function() {
+            expect(getNameFromPath('http://x.com/some/dir/myModule')).toBe('myModule');
+        });
+    });
+
+    describe('getLocationFromPath()', function() {
+        var getLocationFromPath;
+        beforeEach(function() {
+            getLocationFromPath = ModuleManager.test.getLocationFromPath;
+        });
+        it('returns an empty string if only name is given', function() {
+            expect(getLocationFromPath('myModule')).toBe('');
+        });
+
+        it('returns the location part of the path only', function() {
+            expect(getLocationFromPath('http://x.com/some/dir/myModule')).toBe('http://x.com/some/dir');
+        });
+
+    });
+
+
     /*
     var ModuleManager, Module, module1, module2;
     var moduleList = [
