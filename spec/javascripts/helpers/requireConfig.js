@@ -1,4 +1,4 @@
 window.requireConfig = {
-    paths: {river: '.',modules:'modules'}
+    paths: {river: '.'}
 };
 require.config(requireConfig);

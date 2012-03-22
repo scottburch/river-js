@@ -1,6 +1,7 @@
 (function () {
 
     var modules = [
+        {path: 'moduleManagerTests'}
 //        {name: 'widgets'},
 //        {name:'model'},
 //        {name:'commonUtils'},
@@ -18,9 +19,9 @@
             var modulesLoaded;
 
             runs(function () {
-                require(['lib/Application'], function (Application) {
+                require(['river/lib/Application'], function (Application) {
                     window.Application = Application;
-                    Application.start('', modules, function() {
+                    Application.start('spec/modules', modules, function() {
                         modulesLoaded = true;
                     });
                 });
