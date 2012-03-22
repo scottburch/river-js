@@ -2,7 +2,7 @@ describe('lib:Module', function() {
     var Module;
 
 
-    requireDependencies('lib/Module', function (module) {
+    requireDependencies('river/lib/Module', function (module) {
         Module = module;
     });
 

@@ -8,7 +8,9 @@
         });
 
         function setupRequireConfig() {
-            window.requireConfig = window.requireConfig || {paths:{}};
+            window.requireConfig = window.requireConfig || {};
+            window.requireConfig.paths = window.requireConfig.paths || {};
+
             if(config.riverPath) {
                 requireConfig.paths.river = config.riverPath;
             }
