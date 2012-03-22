@@ -2,7 +2,7 @@ describe('Application', function() {
 
     var Application;
 
-    requireDependencies(['lib/Application'], function(a) {
+    requireDependencies(['river/lib/Application'], function(a) {
         Application = a;
         Application.start('myBaseDir', function() {});
     });

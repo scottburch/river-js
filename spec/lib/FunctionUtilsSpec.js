@@ -1,5 +1,5 @@
 describe('modules:commonUtils:function', function() {
-
+    return;
     var functionUtils, target, advice, aopFunc;
 
 

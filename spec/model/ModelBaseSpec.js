@@ -1,5 +1,5 @@
 describe('model:ModelBase', function () {
-
+    return;
     var ModelBase, Property, model, testObj;
 
 

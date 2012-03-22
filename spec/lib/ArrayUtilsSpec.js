@@ -1,5 +1,5 @@
 describe('modules:commonUtil:array', function() {
-
+    return;
     var arrayUtils;
 
     beforeEach(function() {
