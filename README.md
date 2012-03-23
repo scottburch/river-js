@@ -35,6 +35,24 @@ Your application should be a series of modules rather than a single module.
 
 Modules communicate through __events__ and __actions__.
 
+Module files look like this:
+
+    /**
+    ** Some module without a configuration object
+    **/
+    defineModule(function(that) {
+        that.xxxx = function() {};
+        that.yyyy = 10;
+    });
+
+    /**
+    ** Some module with a configuration object
+    **/
+    defineModule({description:'xxxxx'}, function(that) {
+        // The description object is the base of 'that'.  In this case that.description === 'xxxxxx'
+
+    });
+
 
 ### Using files within a module
 
@@ -44,7 +62,7 @@ For example, the "auth" module could have a login view within the directory call
     /**
     ** Auth module
     **/
-    defineModule({name:'auth', category:'system', description:'Authentication'}, function(that) {
+    defineModule(function(that) {
         that.on_desktop_desktopReady = function() {                       // there is a desktop module that sets everything up first
             that.require(['views/LoginView'], function(LoginView) {       // retreives LoginView.js from the /views directory within the module
                 LoginView(loginHelper);                                   // instantiate the login view passing helper functions separating the view from the logic
@@ -68,7 +86,7 @@ The format of the event hook is: on_[moduleName]_[event].
     ** User Module
     **/
 
-    defineModule({name:'user', category:'system', description:'Sends name to server'}, function(that) {
+    defineModule(function(that) {
         that.updateName = function(newName) {
             that.fireEvent('nameUpdated', {name: newName});
         }
@@ -84,7 +102,7 @@ The format of the event hook is: on_[moduleName]_[event].
     ** User Service Module
     **/
 
-    defineModule({name:'userService', category:'system', description:'User behavior'}, function(that) {
+    defineModule(function(that) {
         that.on_userView_nameUpdated = function(data) {
             // code here to communicate with server
             that.fireEvent('nameUpdated', data);
@@ -126,7 +144,7 @@ The main event to kick off the application is moduleManager_modulesLoaded.  Here
     /**
     ** Desktop Module
     **/
-    defineModule({name:'desktop', category:'system', description:'Desktop module'}, function(that) {
+    defineModule(function(that) {
         that.on_moduleManager_modulesLoaded = function() {
             '// setup your desktop here (load template...)
             that.fireEvent('desktopReady');
@@ -144,7 +162,7 @@ The module name is not included since actions are used when a module needs somet
     /**
     ** User Module
     **/
-    defineModule({name:'user', category:'system', description:'User behavior'}, function(that) {
+    defineModule(function(that) {
         that.updateName = function(newName) {
             that.fireEvent('nameUpdated', {name: newName});
             that.doAction('log', {message: 'user name changed'});
@@ -160,7 +178,7 @@ The module name is not included since actions are used when a module needs somet
     ** Logging module
     **/
 
-    defineModule({name:'log', category:'system', description:'Logging module'}, function(that) {
+    defineModule(function(that) {
         do_log = function(data, module){                                // With actions, the originating module is passed as the second argument
             console.log(module.name + ': ' + data.message);
         }
@@ -169,7 +187,7 @@ The module name is not included since actions are used when a module needs somet
 Passing the module as the second argument allows us to create actions that can opperate in the foreign modules directory.
 This may be a break from modules not communicating with each other, but it does make this more convienient.
 
-    defineModule({name:'loaders', category:'River', description:'Loaders for css...'}, function (that) {
+    defineModule(function (that) {
 
         that.do_loadCss = function(data, mod) {
             var el = document.createElement('link');
