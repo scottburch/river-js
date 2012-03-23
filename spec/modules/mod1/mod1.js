@@ -9,5 +9,7 @@ defineModule({a:1,b:2}, function(that) {
 
     that.on_mod1_someEvent = function(data) {};
 
+    that.do_something = function(data, module) {};
+
 
 });

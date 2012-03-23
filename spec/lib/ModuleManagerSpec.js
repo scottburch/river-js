@@ -69,7 +69,7 @@ describe('lib:ModuleManager', function () {
             when('someEvent is fired', function () {
                 mod1.fireEvent('someEvent', 'myData1');
             });
-            then('someEvent hook is called with arguments', function () {
+            then('someEvent hook is called with data', function () {
                 waitsFor(function () {
                     return mod1.on_mod1_someEvent.callCount;
                 });
@@ -77,6 +77,31 @@ describe('lib:ModuleManager', function () {
                     expect(mod1.on_mod1_someEvent).toHaveBeenCalledWith('myData1');
                 });
             });
+        });
+    });
+
+    describe('actions', function() {
+        var mod1;
+        beforeEach(function() {
+            mod1 = require('mod1Module');
+            spyOn(mod1, 'do_something');
+        });
+
+        scenario('requesting actions', function() {
+            when('somebody requests an event', function() {
+                mod1.doAction('something', 'data1');
+            });
+
+            then('action hook called with data and original module', function() {
+                waitsFor(function() {
+                    return mod1.do_something.callCount;
+                });
+                runs(function() {
+                    expect(mod1.do_something).toHaveBeenCalledWith('data1', mod1);
+                });
+            });
+
+
         });
     });
 
