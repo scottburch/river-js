@@ -48,9 +48,15 @@ Module files look like this:
     /**
     ** Some module with a configuration object
     **/
-    defineModule({description:'xxxxx'}, function(that) {
-        // The description object is the base of 'that'.  In this case that.description === 'xxxxxx'
+    defineModule({description:'xxxxx', category:'yyy'}, function(that) {
+        // The optional first argument is the base of 'that'.  In this case that.description === 'xxxxxx'
+    });
 
+    /**
+    ** Some module that uses require to load a module
+    **/
+    defineModule({requires: ['mod1']}, function(that, mod1) {
+        // mod1 is available here
     });
 
 
