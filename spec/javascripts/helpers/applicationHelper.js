@@ -1,17 +1,6 @@
 (function () {
 
     var modules = [
-        {path: 'moduleManagerTests'}
-//        {name: 'widgets'},
-//        {name:'model'},
-//        {name:'commonUtils'},
-//        {name:'desktop'},
-//        {name:'domain'},
-//        {name:'limTree'},
-//        {name: 'serverRequest'},
-//        {name: 'limCreator'},
-//        {name: 'widgets'},
-//        {name: 'messageBox'}
     ];
 
     beforeEach(function loadModules() {
