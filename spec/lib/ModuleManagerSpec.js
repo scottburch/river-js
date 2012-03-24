@@ -3,8 +3,38 @@ describe('lib:ModuleManager', function () {
     var ModuleManager;
 
 
+    function loadModules() {
+        ModuleManager.loadModules([
+            {path:'spec/modules/mod1'}
+        ],asyncSpecDone);
+        asyncSpecWait();
+    }
+
     requireDependencies(['river/lib/ModuleManager'], function (mm) {
         ModuleManager = mm;
+    });
+
+    beforeEach(function() {
+        runOnce(loadModules);
+    })
+
+
+    describe('loadModules()', function () {
+        it('should load the module and create mod1Module require config', function () {
+            var mod1;
+            then('module uses passed config object', function () {
+                mod1 = require('mod1Module');
+                expect(mod1.a).toBe(1);
+                expect(mod1.b).toBe(2);
+                expect(mod1.c).toBe(3);
+            });
+
+            then('module manager fires modulesLoaded event', function () {
+                waitsFor(function () {
+                    return mod1.modulesLoadedFired;
+                });
+            });
+        });
     });
 
 
@@ -35,28 +65,6 @@ describe('lib:ModuleManager', function () {
         });
     });
 
-    describe('loadModules()', function () {
-        it('should load the module and create mod1Module require config', function () {
-            var mod1;
-            when('loading modules', function () {
-                ModuleManager.loadModules([
-                    {path:'spec/modules/mod1'}
-                ], asyncSpecDone);
-                asyncSpecWait();
-            });
-            then('module uses passed config object', function () {
-                mod1 = require('mod1Module');
-                expect(mod1.a).toBe(1);
-                expect(mod1.b).toBe(2);
-                expect(mod1.c).toBe(3);
-            });
-            then('module manager fires modulesLoaded event', function () {
-                waitsFor(function () {
-                    return mod1.modulesLoadedFired;
-                });
-            });
-        });
-    });
 
     describe('events', function () {
         var mod1;
@@ -100,7 +108,31 @@ describe('lib:ModuleManager', function () {
                     expect(mod1.do_something).toHaveBeenCalledWith('data1', mod1);
                 });
             });
+        });
+    });
 
+    describe('event filtering', function() {
+        var mod1;
+        beforeEach(function() {
+            mod1 = require('mod1Module');
+            spyOn(mod1, 'filterEvents').andCallFake(function(obj, cb) {
+                cb();
+            });
+        });
+
+        scenario('filtering events', function() {
+            given('an event with data', function() {
+                mod1.fireEvent('testEvent', 'someData');
+            });
+            then('the filter is called with the originating module and a callback', function() {
+                waitsFor(function() {
+                    return mod1.filterEvents.callCount;
+                },'waiting for filterEvents to be called',1000);
+                runs(function() {
+                    expect(mod1.filterEvents.calls[0].args[0].module).toBe(mod1);
+                    expect(mod1.filterEvents.calls[0].args[0].event).toBe('testEvent');
+                });
+            });
 
         });
     });
