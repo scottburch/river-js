@@ -206,3 +206,7 @@ This may be a break from modules not communicating with each other, but it does 
     // In some other module
 
     that.doAction('loadCss', {href: 'css/myModule.css'});
+
+## NOTES
+
+* river modifies the configuration for require.  If you want to pass in an initial requie configuration simply set the variable __requireConfig__ to the config object

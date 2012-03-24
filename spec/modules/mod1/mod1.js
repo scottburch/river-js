@@ -5,10 +5,7 @@ defineModule({a:1,b:2}, function(that) {
         that.modulesLoadedFired = true;
     };
 
-    that.filterEvents = function(module, cb) {
-        var x = 10;
-        cb()
-    };
+    that.filterEvents = function(module, cb) {cb()};
 
     that.on_mod1_someEvent = function(data) {};
 
