@@ -122,7 +122,7 @@ describe('lib:ModuleManager', function () {
 
         scenario('filtering events', function() {
             given('an event with data', function() {
-                mod1.fireEvent('testEvent', 'someData');
+                mod1.fireEvent('someEvent', 'someData');
             });
             then('the filter is called with the originating module and a callback', function() {
                 waitsFor(function() {
@@ -130,7 +130,7 @@ describe('lib:ModuleManager', function () {
                 },'waiting for filterEvents to be called',1000);
                 runs(function() {
                     expect(mod1.filterEvents.calls[0].args[0].module).toBe(mod1);
-                    expect(mod1.filterEvents.calls[0].args[0].event).toBe('testEvent');
+                    expect(mod1.filterEvents.calls[0].args[0].event).toBe('someEvent');
                 });
             });
 
