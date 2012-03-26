@@ -1,21 +1,14 @@
 (function() {
     "use strict";
     window.river = function(config, cb) {
-
         loadRequire(function() {
-            require([norm('vendor/es5'),norm('vendor/async')], function() {
-                setupRequireConfig();
+            setupRequireConfig();
 
-                require(['river/lib/Application'], function(App) {
-                    App.start(config.modulesPath, config.modules, cb);
-                });
+            require(['river/lib/Application','river/vendor/es5','river/vendor/async'], function(App) {
+                App.start(config.modulesPath, config.modules, cb);
             });
         });
 
-
-        function norm(path) {
-            return config.riverPath + '/' + path;
-        }
 
         function setupRequireConfig() {
             window.requireConfig = window.requireConfig || {};
