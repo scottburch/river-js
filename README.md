@@ -18,7 +18,8 @@ Here is a list of available [river modules](https://github.com/scottburch/river-
 
 ## Installing
 
-The best way to get a look into how river works is to install [river-demo](https://github.com/scottburch/river-demo)
+The best way to get a look into how river works is to install [river-demo](https://github.com/scottburch/river-demo), or
+try the [online demo](http://scottburch.github.com/river-demo/demo/index.html)
 
 
 ## Modules
