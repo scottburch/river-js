@@ -134,6 +134,8 @@ describe('lib:ModuleManager', function () {
                 runs(function() {
                     expect(mod1.filterEvents.calls[0].args[0].module).toBe(mod1);
                     expect(mod1.filterEvents.calls[0].args[0].event).toBe('someEvent');
+                    expect(mod1.filterEvents.calls[0].args[0].args[0]).toBe('someData');
+                    expect(mod1.filterEvents.calls[0].args[0].type).toBe('event');
                 });
             });
 

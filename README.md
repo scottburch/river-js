@@ -1,26 +1,29 @@
-NOTES:
+## Introduction
+One of the best things that a programmer can do in modern software development is code for change.  It is absolutely essential in agile development.
+River is a framework to aid in developing systems that are very easy to change.  I have used it to develop 2 prototypes and 3 applications for production.
 
-* Documentation is in progress.
+River has helped me to make changes more quickly and with fewer bugs.  It also helped guide me into writing more reusable code so that I could share modules
+between projects.
 
-* Any feedback is very appreciated. If anyone needs help installing or using, please let me know.
-
-
-
+## What is River?
 River is a modular Javascript framework to assist in creating client side webapps containing decoupled and reusable code.
-It is not a MVC framework as much as it is a code organizing and coordinating framework using the Facade/Mediator pattern.
+__River is not a MVC framework__ as much as it is a code organizing and coordinating framework using the Facade/Mediator pattern.
 
-This means that modules can be snapped into place and used without affecting other code.
+This means that modules (small peices of functionality) can be snapped into place and used without affecting other code.
 Modules can be removed or disabled without causing any errors.
 
 Some users want a certain feature and others do not.  Simple, just disable the module for those customers that don't want it.
 
 Here is a list of available [river modules](https://github.com/scottburch/river-js/wiki/River-Modules).  Please feel free to submit others.
 
-## Installing
+## Try River
 
 The best way to get a look into how river works is to install [river-demo](https://github.com/scottburch/river-demo), or
 try the [online demo](http://scottburch.github.com/river-demo/demo/index.html)
 
+## Installing
+
+I am working on an installer for river.  Until then, simply download the demo using the link above and remove and add modules as you like.
 
 ## Modules
 
@@ -208,6 +211,22 @@ This may be a break from modules not communicating with each other, but it does 
 
     that.doAction('loadCss', {href: 'css/myModule.css'});
 
+## FILTERING EVENTS
+There are times when you may want to externally filter events going to modules.  To do this add a __filterEvents__ method to a module.
+The filterEvents method is called for each module for each event or action.
+
+    defineModule(function(that) {
+        that.filterEvents = function(data, cb) {
+            // data.module     The module that threw the event (module.name will provide the name of the module)
+            // data.event      The event name
+            // data.args;      The arguments passed to the event
+            // data.type;      "event" or "action"
+
+            cb(false);         // returning false stops the event.  Anything else allows the event.
+        }
+    }
+
+
 ## NOTES
 
-* river modifies the configuration for require.  If you want to pass in an initial requie configuration simply set the variable __requireConfig__ to the config object
+* river modifies the configuration for require.  If you want to pass in an initial require configuration simply set the variable __requireConfig__ to the config object
