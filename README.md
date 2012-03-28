@@ -23,6 +23,7 @@ try the [online demo](http://scottburch.github.com/river-demo/demo/index.html)
 
 ## Videos
 [installing river](http://www.youtube.com/watch?v=baaDRtgai-E) - Installing river
+[first module](http://www.youtube.com/watch?v=glC-Wtagdyc) - Creating your first module
 
 
 ## Installing
