@@ -21,9 +21,39 @@ Here is a list of available [river modules](https://github.com/scottburch/river-
 The best way to get a look into how river works is to install [river-demo](https://github.com/scottburch/river-demo), or
 try the [online demo](http://scottburch.github.com/river-demo/demo/index.html)
 
+
 ## Installing
 
-I am working on an installer for river.  Until then, simply download the demo using the link above and remove and add modules as you like.
+The following assumes that you are placing the river files in /vendor/river and modules in /modules.
+You can put river or the modules anywhere you wish.  Simply change the configuration to match the location.
+
+* Download [river](https://github.com/scottburch/river-js/tarball/master) and unpack as /vendor/river
+* Place the following someplace in your html
+
+
+    <script type="text/javascript" src="vendor/river/river.js"></script>
+    <script>
+        river({
+            riverPath:'vendor/river',
+            modulesPath:'modules',
+            modules: []
+        });
+    </script>
+
+
+## Adding modules
+
+For river to see modules they must be added to the configuration.  The following is an example of different ways to load modules
+
+    river({
+        // config options
+        modules: [
+            {path:'moduleInModulesDir'},
+            {path:'http://this.com/moduleSomeplaceElse'}
+            {path:'module/not/in/modules/dir'}
+        ]
+    })
+
 
 ## Modules
 
