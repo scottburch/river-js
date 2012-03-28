@@ -23,8 +23,10 @@ try the [online demo](http://scottburch.github.com/river-demo/demo/index.html)
 
 ## Videos
 [installing river](http://www.youtube.com/watch?v=baaDRtgai-E) - Installing river
+
 [first module](http://www.youtube.com/watch?v=glC-Wtagdyc) - Creating your first module
-[module communicating with a server](http://youtu.be/_6fyft8Y4CA)
+
+[module communicating with a server](http://www.youtube.com/watch?v=_6fyft8Y4CA) - adding a server communication module
 
 
 ## Installing
