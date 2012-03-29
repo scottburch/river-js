@@ -1,0 +1,3 @@
+#java -cp tools/groovy/lib/groovy-1.8.3.jar:tools/groovy/lib/commons-logging-1.1.1.jar:bin River
+
+java -cp tools/groovy/lib/'*':bin River
