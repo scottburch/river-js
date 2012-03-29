@@ -12,11 +12,24 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/lib" />
+          <root url="file://$MODULE_DIR$/tools/groovy/lib/groovy" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/tools/groovy/lib/groovy" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/tools/groovy/lib/groovy" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/tools/groovy/lib/groovy" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/tools/groovy/lib/httpBuilder" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/tools/groovy/lib/httpBuilder" recursive="false" />
       </library>
     </orderEntry>
   </component>

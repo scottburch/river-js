@@ -1,1 +1,4 @@
-{"moduleLocation": "http://hereitis.com"}
+{
+    "moduleLocation": "http://localhost/~scott/plugins.json",
+    "moduleDir": "modules"
+}
