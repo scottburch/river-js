@@ -4,7 +4,7 @@ class Config {
     def config
 
     public Config() {
-        config = new JsonSlurper().parseText(new File('config.json').text)
+        config = new JsonSlurper().parseText(new File('conf/config.json').text)
         println config
     }
 

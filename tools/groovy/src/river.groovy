@@ -14,7 +14,14 @@ this['list-plugins'] = {
 }
 
 this['install-plugin'] = {
+    def pluginInfo = getPluginInfo(this.args[1])
+    def file = new FileOutputStream('river-plugin-temp')
+    def out = new BufferedOutputStream(file)
+    out << new URL(pluginInfo.path).openStream()
+    out.close()
 
+    def ant = new AntBuilder()
+    ant.unzip (src:'river-plugin-temp', dest:config.config.modulesDir + '/' + pluginInfo.name)
 }
 
 if(cmd) {
@@ -33,3 +40,8 @@ private getPluginConfig() {
     }
 }
 
+private getPluginInfo(name) {
+    def json = getPluginConfig()
+    def pluginInfo = json.plugins.find {return it.name == name}
+    return pluginInfo
+}
