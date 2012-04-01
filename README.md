@@ -265,6 +265,11 @@ The filterEvents method is called for each module for each event or action.
     }
 
 
+## TESTING
+Initialize river modules that you want to use for a test before running the test.  In order to ensure that all modules are loaded, use the callback from the river bootloader.
+
+    river({// my config},
+
 ## NOTES
 
 * river modifies the configuration for require.  If you want to pass in an initial require configuration simply set the variable __requireConfig__ to the config object
