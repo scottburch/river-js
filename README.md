@@ -265,6 +265,30 @@ The filterEvents method is called for each module for each event or action.
     }
 
 
-## NOTES
+## TESTING
+Initialize river modules that you want to use for a test before running the test.
+In order to ensure that all modules are loaded, use the callback from the river bootloader.
 
-* river modifies the configuration for require.  If you want to pass in an initial require configuration simply set the variable __requireConfig__ to the config object
+    river({// my config}, function() {
+        // all modules are loaded here - safe to start tests
+    })
+
+You can then get modules from require.  In your test:
+
+    var foo = require('fooModule');
+
+All module names are appended with Module in require.  A module named "foo" can be aquired by the name fooModule
+
+## REQUIRE CONFIGURATION
+
+river modifies the configuration for require.  If you want to pass in an initial require configuration simply set the variable __requireConfig__ to the config object
+
+    var requireConfig = {
+        baseUrl: 'some/place'
+    };
+    // then initialize river
+
+
+
+
+
