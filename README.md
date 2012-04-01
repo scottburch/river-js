@@ -1,11 +1,11 @@
-## Introduction
+### Introduction
 One of the best things that a programmer can do in modern software development is code for change.  It is absolutely essential in agile development.
 River is a framework to aid in developing systems that are very easy to change.  I have used it to develop 2 prototypes and 3 applications for production.
 
 River has helped me to make changes more quickly and with fewer bugs.  It also helped guide me into writing more reusable code so that I could share modules
 between projects.
 
-## What is River?
+### What is River?
 River is a modular Javascript framework to assist in creating client side webapps containing decoupled and reusable code.
 __River is not a MVC framework__ as much as it is a code organizing and coordinating framework using the Facade/Mediator pattern.
 
@@ -16,12 +16,12 @@ Some users want a certain feature and others do not.  Simple, just disable the m
 
 Here is a list of available [river modules](https://github.com/scottburch/river-js/wiki/River-Modules).  Please feel free to submit others.
 
-## Try River
+### Try River
 
 The best way to get a look into how river works is to install [river-demo](https://github.com/scottburch/river-demo), or
 try the [online demo](http://scottburch.github.com/river-demo/demo/index.html)
 
-## Videos
+### Videos
 [installing river](http://www.youtube.com/watch?v=baaDRtgai-E) - Installing river
 
 [first module](http://www.youtube.com/watch?v=glC-Wtagdyc) - Creating your first module
@@ -29,7 +29,7 @@ try the [online demo](http://scottburch.github.com/river-demo/demo/index.html)
 [module communicating with a server](http://www.youtube.com/watch?v=_6fyft8Y4CA) - adding a server communication module
 
 
-## Installing
+### Installing
 
 The following assumes that you are placing the river files in /vendor/river and modules in /modules.
 You can put river or the modules anywhere you wish.  Simply change the configuration to match the location.
@@ -49,7 +49,7 @@ You can put river or the modules anywhere you wish.  Simply change the configura
     </script>
 
 
-## Adding modules
+### Adding modules
 
 For river to see modules they must be added to the configuration.  The following is an example of different ways to load modules
 
@@ -63,7 +63,7 @@ For river to see modules they must be added to the configuration.  The following
     })
 
 
-## Modules
+### Modules
 
 The key to river is modules.  Modules are small components with a specific functionality or portion of the application.
 Modules do not communicate directly with each other, rather, they communicate through a single mediator.
@@ -249,7 +249,7 @@ This may be a break from modules not communicating with each other, but it does 
 
     that.doAction('loadCss', {href: 'css/myModule.css'});
 
-## FILTERING EVENTS
+### FILTERING EVENTS
 There are times when you may want to externally filter events going to modules.  To do this add a __filterEvents__ method to a module.
 The filterEvents method is called for each module for each event or action.
 
@@ -265,7 +265,7 @@ The filterEvents method is called for each module for each event or action.
     }
 
 
-## TESTING
+### TESTING
 Initialize river modules that you want to use for a test before running the test.
 In order to ensure that all modules are loaded, use the callback from the river bootloader.
 
@@ -279,7 +279,7 @@ You can then get modules from require.  In your test:
 
 All module names are appended with Module in require.  A module named "foo" can be aquired by the name fooModule
 
-## REQUIRE CONFIGURATION
+### REQUIRE CONFIGURATION
 
 river modifies the configuration for require.  If you want to pass in an initial require configuration simply set the variable __requireConfig__ to the config object
 
