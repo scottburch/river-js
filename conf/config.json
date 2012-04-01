@@ -1,5 +1,4 @@
 {
     "moduleListHost": "http://localhost",
-    "moduleListPath": "~scott/plugins.json",
-    "modulesDir": "../../modules"
+    "moduleListPath": "~scott/plugins.json"
 }

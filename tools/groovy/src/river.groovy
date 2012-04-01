@@ -20,8 +20,9 @@ this['install-plugin'] = {
     out << new URL(pluginInfo.path).openStream()
     out.close()
 
-    def ant = new AntBuilder()
-    ant.unzip (src:'river-plugin-temp', dest:config.config.modulesDir + '/' + pluginInfo.name)
+    AntBuilder ant = new AntBuilder()
+    ant.unzip (src:'river-plugin-temp', dest: pluginInfo.name)
+    ant.delete (file:'river-plugin-temp')
 }
 
 if(cmd) {
