@@ -249,6 +249,8 @@ This may be a break from modules not communicating with each other, but it does 
 
     that.doAction('loadCss', {href: 'css/myModule.css'});
 
+__this is in the [loaders module](https://github.com/scottburch/river-loaders)__
+
 ### FILTERING EVENTS
 There are times when you may want to externally filter events going to modules.  To do this add a __filterEvents__ method to a module.
 The filterEvents method is called for each module for each event or action.
