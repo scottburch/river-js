@@ -281,6 +281,8 @@ You can then get modules from require.  In your test:
 
 All module names are appended with Module in require.  A module named "foo" can be aquired by the name fooModule
 
+__you can use the [jasmine](https://github.com/scottburch/river-jasmine) module to test modules__.  See river-demo and the loaders module for an example.
+
 ### REQUIRE CONFIGURATION
 
 river modifies the configuration for require.  If you want to pass in an initial require configuration simply set the variable __requireConfig__ to the config object
