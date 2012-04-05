@@ -56,7 +56,7 @@ For river to see modules they must be added to the configuration.  The following
     river({
         // config options
         modules: [
-            {path:'moduleInModulesDir'},
+            {path:'moduleInModulesDir', enabled: false},    // module is loaded in disabled mode
             {path:'http://this.com/moduleSomeplaceElse'}
             {path:'module/not/in/modules/dir'}
         ]
