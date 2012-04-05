@@ -4,7 +4,7 @@ describe('Application', function() {
 
     requireDependencies(['river/lib/Application'], function(a) {
         Application = a;
-        Application.start('myBaseDir', function() {});
+        Application.start('myModulesDir', function() {});
     });
 
     beforeEach(function() {
@@ -12,8 +12,8 @@ describe('Application', function() {
     });
 
     describe('start()', function() {
-        it('sets the Application.baseDir directory', function() {
-            expect(Application.baseDir = 'myBaseDir');
+        it('sets the Application.modulesDir directory', function() {
+            expect(Application.modulesDir = 'myModulesDir');
         });
     });
 });
