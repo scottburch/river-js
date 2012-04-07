@@ -283,6 +283,27 @@ All module names are appended with Module in require.  A module named "foo" can 
 
 __you can use the [jasmine](https://github.com/scottburch/river-jasmine) module to test modules__.  See river-demo and the loaders module for an example.
 
+
+### OBTAINING MODULES
+
+Even though modules should not communicate directly with each others, there are situations when there is an advantage in doing so.
+River allows you to obtain other module files for these situations.
+
+__To obtain a single module:__
+
+    // get a module named 'foo'
+    var mod = require('fooModule');
+
+This is used for testing single modules using the [jasmine module](https://github.com/scottburch/river-jasmine)
+
+__To obtain all other modules:__
+
+    // get all modules
+    var modules = require('river/lib/ModuleManager').getModules();
+
+This is used inside of the [jasmine module](https://github.com/scottburch/river-jasmine) in order to find module tests.
+
+
 ### REQUIRE CONFIGURATION
 
 river modifies the configuration for require.  If you want to pass in an initial require configuration simply set the variable __requireConfig__ to the config object
