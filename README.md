@@ -28,6 +28,8 @@ try the [online demo](http://scottburch.github.com/river-demo/demo/index.html)
 
 [module communicating with a server](http://www.youtube.com/watch?v=_6fyft8Y4CA) - adding a server communication module
 
+[a desktop with widgets](http://www.youtube.com/watch?v=Not7DSpCgfw) - chaining events to ensure proper ordering
+
 
 ### Installing
 
