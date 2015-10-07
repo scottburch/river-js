@@ -235,7 +235,7 @@ The module name is not included since actions are used when a module needs somet
     });
 
 Passing the module as the second argument allows us to create actions that can opperate in the foreign modules directory.
-This may be a break from modules not communicating with each other, but it does make this more convienient.
+This may be a break from modules not communicating with each other, but it does make this more convenient.
 
     defineModule(function (that) {
 
